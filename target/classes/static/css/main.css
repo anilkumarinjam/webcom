@@ -269,7 +269,7 @@ button.accent:hover {
 }
 
 /* Media Queries */
-@media screen and (max-width: 730px) {
+/* @media screen and (max-width: 730px) {
     .chat-container {
         margin-left: 10px;
         margin-right: 10px;
@@ -311,4 +311,4 @@ button.accent:hover {
     .chat-header h2 {
         font-size: 1.1em;
     }
-}
+} */
