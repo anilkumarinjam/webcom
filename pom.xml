@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>webcom</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<packaging>jar</packaging>
 	<name>webcom</name>
 	<description>Real time char application with Web socket</description>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
+			<version>3.3.5</version>
 		</dependency>
 
 

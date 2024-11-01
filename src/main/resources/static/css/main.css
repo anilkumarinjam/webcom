@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-html,body {
+html, body {
     height: 100%;
     overflow: hidden;
 }
@@ -12,26 +12,23 @@ html,body {
 body {
     margin: 0;
     padding: 0;
-    font-weight: 400;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.58;
     color: #333;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #128ff2 50%, #f4f4f4 50%);
     height: 100%;
+    animation: gradientAnimation 15s ease infinite;
 }
 
-body:before {
-    height: 50%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #128ff2;
-    content: "";
-    z-index: 0;
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
-
+.title{
+    color:#f0f0f2;
+}
 .clearfix:after {
     display: block;
     content: "";
@@ -47,12 +44,24 @@ body:before {
     min-height: 38px;
     font-size: 15px;
     border: 1px solid #c8c8c8;
+    border-radius: 5px;
+    padding: 0.4rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #9f48f1;
 }
 
 .form-group {
+    margin-top: 15px;
     margin-bottom: 15px;
 }
+.form-group:hover {
+    scale: 1.1;
+    transition: 0.4s;
 
+}
 input {
     padding-left: 10px;
     outline: none;
@@ -68,40 +77,50 @@ h1 {
 }
 
 a {
-    color: #128ff2;
+    color: #7b57e8;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff4743;
 }
 
 button {
-    box-shadow: none;
     border: 1px solid transparent;
     font-size: 14px;
     outline: none;
-    line-height: 100%;
-    white-space: nowrap;
-    vertical-align: middle;
     padding: 0.6rem 1rem;
-    border-radius: 2px;
-    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
     cursor: pointer;
     min-height: 38px;
+    transition: all 0.3s ease;
+    background-size: 200% auto;
 }
 
 button.default {
     background-color: #e8e8e8;
     color: #333;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 button.primary {
-    background-color: #128ff2;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, #128ff2, #8048cf);
     color: #fff;
+    box-shadow: 0 4px 10px rgba(18, 143, 242, 0.4);
+}
+
+button.primary:hover {
+    background-position: right center;
 }
 
 button.accent {
-    background-color: #ff4743;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, #7d54e6, #ba5ce2);
     color: #fff;
+    box-shadow: 0 4px 10px rgba(255, 71, 67, 0.4);
+}
+
+button.accent:hover {
+    background-position: right center;
 }
 
 #username-page {
@@ -109,29 +128,24 @@ button.accent {
 }
 
 .username-page-container {
-    background: #fff;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    border-radius: 2px;
+    background: linear-gradient(135deg, #aa8eef, #7c8cea);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     width: 100%;
     max-width: 500px;
-    display: inline-block;
-    margin-top: 42px;
-    vertical-align: middle;
-    position: relative;
-    padding: 35px 55px 35px;
+    padding: 35px 55px;
     min-height: 250px;
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    margin-top: -160px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadeIn 1s ease-out;
 }
 
-.username-page-container .username-submit {
-    margin-top: 10px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95) translate(-50%, -50%); }
+    to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
 }
-
 
 #chat-page {
     position: relative;
@@ -140,30 +154,32 @@ button.accent {
 
 .chat-container {
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    margin-top: 30px;
+    margin: 30px auto;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     height: calc(100% - 60px);
-    max-height: 600px;
-    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 #chat-page ul {
     list-style-type: none;
-    background-color: #FFF;
+    background-color: #fff;
     margin: 0;
+    padding: 0 20px 0 20px;
+    height: calc(100% - 150px);
     overflow: auto;
     overflow-y: scroll;
-    padding: 0 20px 0px 20px;
-    height: calc(100% - 150px);
 }
-
 #chat-page #messageForm {
     padding: 20px;
 }
-
 #chat-page ul li {
     line-height: 1.5rem;
     padding: 10px 20px;
@@ -173,8 +189,8 @@ button.accent {
 
 #chat-page ul li p {
     margin: 0;
+    color: #43464b;
 }
-
 #chat-page .event-message {
     width: 100%;
     text-align: center;
@@ -217,23 +233,25 @@ button.accent {
 #chat-page .chat-message p {
     color: #43464b;
 }
-
 #messageForm .input-group input {
-    float: left;
-    width: calc(100% - 85px);
+    width: calc(100% - 90px);
+    padding: 0.4rem;
+    border-radius: 5px;
 }
 
 #messageForm .input-group button {
-    float: left;
     width: 80px;
     height: 38px;
     margin-left: 5px;
+    border-radius: 5px;
 }
 
 .chat-header {
     text-align: center;
     padding: 15px;
     border-bottom: 1px solid #ececec;
+    background: linear-gradient(135deg, #6f3be9, #ff751f);
+    color: #fff;
 }
 
 .chat-header h2 {
@@ -244,15 +262,14 @@ button.accent {
 .connecting {
     padding-top: 5px;
     text-align: center;
-    color: #777;
+    color: #9aedb1;
     position: absolute;
     top: 65px;
     width: 100%;
 }
 
-
+/* Media Queries */
 @media screen and (max-width: 730px) {
-
     .chat-container {
         margin-left: 10px;
         margin-right: 10px;
@@ -264,7 +281,7 @@ button.accent {
     .chat-container {
         height: calc(100% - 30px);
     }
-
+    
     .username-page-container {
         width: auto;
         margin-left: 15px;
@@ -281,17 +298,16 @@ button.accent {
     }
 
     #messageForm .input-group input {
-        width: calc(100% - 70px);
+        width: calc(100% - 75px);
     }
-
     .chat-header {
+        background: linear-gradient(135deg, #6f3be9, #ff751f);
         padding: 10px;
     }
 
     .connecting {
         top: 60px;
     }
-
     .chat-header h2 {
         font-size: 1.1em;
     }

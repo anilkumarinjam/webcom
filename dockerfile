@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the Maven-built JAR file into the container
-COPY target/webcom-0.0.1-SNAPSHOT.jar app.jar
+COPY target/webcom-1.jar app.jar
 
 # Expose the port your application runs on
 EXPOSE 8080
